@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .pulse {
+        width: 50px;
+        height: 50px;
+        background-color: purple;
+        border-radius: 50%;
+        animation: pulse 1.5s infinite;
+        margin-top: 50px;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+
+            margin-top: 100px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: heartbeat 1s infinite;
+            margin-top: 100px;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 50px;
+            top: 0;
+        }
+
+        @keyframes heartbeat {
+            0%, 28%, 70%, 100% {
+                transform: scale(1) rotate(-45deg);
+            }
+            14%, 42% {
+                transform: scale(1.3) rotate(-45deg);
+            }
+        }
+        .hand {
+            font-size: 100px;
+            display: inline-block;
+            animation: wave 2s infinite;
+            transform-origin: 70% 70%;
+            margin-top: 100px;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            20% {
+                transform: rotate(-15deg);
+            }
+            40% {
+                transform: rotate(10deg);
+            }
+            60% {
+                transform: rotate(-10deg);
+            }
+            80% {
+                transform: rotate(15deg);
+            }
+        }
+        .glow-button {
+            font-size: 16px;
+            padding: 10px 20px;
+            color: white;
+            background-color: blue;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px blue;
+            animation: glow 1.5s infinite;
+            margin-top: 100px;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px blue;
+            }
+            50% {
+                box-shadow: 0 0 20px blue;
+            }
+            100% {
+                box-shadow: 0 0 5px blue;
+            }
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin-top: 100px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        .flip-card-back {
+            background-color: dodgerblue;
+            color: white;
+            transform: rotateY(180deg);
+        }
+        .float {
+            width: 400px;
+            height: 400px;
+            background-color: lightgreen;
+            animation: float 3s infinite;
+            margin-top: 200px;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .typing {
+            font-family: monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .15em solid orange;
+            animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+            margin-top: 100px;
+            font-size: 100px;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: orange;
+            }
+        }
+        .ripple {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 100px;
+        }
+
+        .ripple::after {
+            content: "";
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple 1.5s infinite;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
+            }
+        }
+</style>
+<body>
+   <center> <div class="pulse"></div></center> 
+   <center><div class="loader"></div></center>
+   <center> <div class="heart"></div></center>
+   <center><div class="hand">👋</div></center>
+   <center><button class="glow-button">Click Me!</button></center>
+   <center><div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            Front Side
+        </div>
+        <div class="flip-card-back">
+            Back Side
+        </div>
+    </div>
+</div></center>
+<center><div class="float"></div></center>
+<center><div class="typing">This is typing animation.</div></center>
+<center>  <div class="ripple"></div></center>
+</body>
+</html>
